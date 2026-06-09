@@ -9,7 +9,7 @@ import CustomCursor from '@/components/CustomCursor';
 const cormorant = Cormorant_Garamond({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], style: ['normal', 'italic'], variable: '--font-cormorant' });
 const manrope = Manrope({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], variable: '--font-manrope' });
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
-const siteUrl = `https://example.com${basePath}`;
+const siteUrl = `https://carlosprestes77-netizen.github.io${basePath}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
