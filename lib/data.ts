@@ -1,18 +1,18 @@
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
-export const STUDIO_NAME = 'Vértice Ink';
-export const TAGLINE = ['Traço preciso', 'Presença rara', 'Memória eterna'];
+export const STUDIO_NAME = 'DW Tattooer';
+export const TAGLINE = ['Whip shading', 'Traço sombrio', 'Pele em ritual'];
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? 'G-XXXXXXXXXX';
-export const PHONE_RAW = '5511999999999';
+export const PHONE_RAW = '5544991373995';
 
 export const ARTIST = {
-  name: 'Clara Vértice',
-  handle: '@claravertice',
-  instagram: 'https://instagram.com/claravertice',
+  name: 'DW Tattooer',
+  handle: '@dw.tattooer',
+  instagram: 'https://www.instagram.com/dw.tattooer',
   whatsapp: PHONE_RAW,
-  location: 'Rua Harmonia, 318 — Vila Madalena',
-  city: 'São Paulo, SP',
-  portrait: `${basePath}/artist/portrait.png`,
+  location: 'Maringá — Paraná',
+  city: 'Maringá, PR',
+  portrait: `${basePath}/artist/portrait.jpg`,
   hours: [
     { day: 'Terça a sexta', time: '11h às 19h' },
     { day: 'Sábado', time: '10h às 17h' },
@@ -21,9 +21,9 @@ export const ARTIST = {
 };
 
 export const stats = [
-  { value: '11+', label: 'anos de estúdio' },
-  { value: '2.8k', label: 'peles marcadas' },
-  { value: '100%', label: 'projetos autorais' },
+  { value: '54+', label: 'trampos publicados' },
+  { value: '1.8k', label: 'seguidores no Instagram' },
+  { value: '100%', label: 'projetos sob consulta' },
   { value: '24h', label: 'guia pós-sessão' }
 ];
 
@@ -35,9 +35,9 @@ export const processSteps = [
 ];
 
 export const testimonials = [
-  { name: 'Marina Lopes', work: 'Ornamental no antebraço', quote: 'A Clara traduziu uma fase inteira da minha vida em linhas. Foi delicado, firme e inesquecível.' },
-  { name: 'Rafael Nunes', work: 'Blackwork nas costelas', quote: 'O desenho parecia pertencer ao meu corpo antes mesmo de ser tatuado. Técnica impecável.' },
-  { name: 'Bianca Tavares', work: 'Fine line no ombro', quote: 'Do atendimento ao pós, tudo foi elegante e seguro. Minha tatuagem continua perfeita.' }
+  { name: 'Kaua', work: 'Whip shading na clavícula', quote: 'O trampo ficou pesado do jeito certo, com sombra limpa e presença absurda.' },
+  { name: 'William', work: 'Fechamento de braço', quote: 'Fechamento com leitura de corpo, contraste forte e muita confiança durante a sessão.' },
+  { name: 'Rafa', work: 'Anime em blackwork', quote: 'Atendimento firme, desenho bem posicionado e resultado muito acima da referência.' }
 ];
 
 export const faqs = [
@@ -51,20 +51,33 @@ export const faqs = [
   { q: 'Quais cuidados devo ter depois?', a: 'Você recebe um guia escrito com limpeza, hidratação, restrições de sol, piscina e treino, além de canal para dúvidas.' }
 ];
 
-const styles = ['Fine line', 'Blackwork', 'Ornamental'] as const;
+const styles = ['Whip shading', 'Blackwork', 'Fine line'] as const;
 export const tattooStyles = styles;
+
+const portfolioLabels = [
+  'Clavícula em sombra',
+  'Fechamento de braço',
+  'Primeiras linhas',
+  'Rotina de estúdio',
+  'Mew',
+  'Satoru Gojo',
+  'Contraste no braço',
+  'Peça autoral',
+  'Detalhe em preto',
+  'Composição vertical'
+];
 
 export const portfolioItems = Array.from({ length: 10 }, (_, index) => {
   const n = String(index + 1).padStart(2, '0');
   const style = styles[index % styles.length];
   return {
     id: `obra-${n}`,
-    src: `${basePath}/portfolio/work-${n}.png`,
-    alt: `Tatuagem ${style} autoral por Clara Vértice`,
+    src: `${basePath}/portfolio/work-${n}.jpg`,
+    alt: `Tatuagem ${style} por DW Tattooer em Maringá`,
     style,
-    placement: ['antebraço', 'costelas', 'ombro', 'coluna', 'panturrilha'][index % 5],
+    placement: ['clavícula', 'braço', 'ombro', 'antebraço', 'perna'][index % 5],
     size: index % 3 === 0 ? 'large' as const : 'medium' as const,
-    label: `${style} ${n}`
+    label: portfolioLabels[index]
   };
 });
 

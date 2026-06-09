@@ -1,6 +1,8 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { access, mkdir, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { deflateSync } from 'node:zlib';
+
+const INSTAGRAM_USERNAME = 'dw.tattooer';
 
 const crcTable = new Uint32Array(256).map((_, n) => {
   let c = n;
@@ -62,7 +64,64 @@ const files = [
   ...Array.from({ length: 8 }, (_, i) => [`public/flashes/sim/flash-${String(i + 1).padStart(2, '0')}.png`, 800, 800])
 ];
 
+async function download(url, file) {
+  await mkdir(dirname(file), { recursive: true });
+  const response = await fetch(url, {
+    headers: {
+      'user-agent': 'Mozilla/5.0',
+      referer: 'https://www.instagram.com/'
+    }
+  });
+  if (!response.ok) throw new Error(`Falha ao baixar ${file}: ${response.status}`);
+  await writeFile(file, Buffer.from(await response.arrayBuffer()));
+}
+
+async function exists(file) {
+  try {
+    await access(file);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function ensureInstagramAssets() {
+  const needed = [
+    'public/artist/portrait.jpg',
+    'public/portfolio/hero.jpg',
+    ...Array.from({ length: 10 }, (_, i) => `public/portfolio/work-${String(i + 1).padStart(2, '0')}.jpg`)
+  ];
+  if ((await Promise.all(needed.map(exists))).every(Boolean)) return;
+
+  try {
+    const response = await fetch(`https://www.instagram.com/api/v1/users/web_profile_info/?username=${INSTAGRAM_USERNAME}`, {
+      headers: {
+        'user-agent': 'Mozilla/5.0',
+        'x-ig-app-id': '936619743392459'
+      }
+    });
+    if (!response.ok) throw new Error(`Instagram respondeu ${response.status}`);
+    const profile = await response.json();
+    const user = profile.data.user;
+    const posts = user.edge_owner_to_timeline_media.edges.slice(0, 10).map((edge) => edge.node.display_url || edge.node.thumbnail_src);
+    const downloads = [
+      ['public/artist/portrait.jpg', user.profile_pic_url_hd],
+      ['public/portfolio/hero.jpg', posts[0]],
+      ...posts.map((url, index) => [`public/portfolio/work-${String(index + 1).padStart(2, '0')}.jpg`, url])
+    ].filter(([, url]) => Boolean(url));
+
+    for (const [file, url] of downloads) {
+      if (!(await exists(file))) await download(url, file);
+    }
+  } catch (error) {
+    console.warn(`Não foi possível baixar fotos do Instagram: ${error.message}`);
+  }
+}
+
+await ensureInstagramAssets();
+
 await Promise.all(files.map(async ([file, width, height], index) => {
+  if (await exists(file)) return;
   await mkdir(dirname(file), { recursive: true });
   await writeFile(file, png(width, height, index + 1));
 }));

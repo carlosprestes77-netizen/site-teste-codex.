@@ -6,7 +6,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 export default function Hero() {
   const { scrollY } = useScroll(); const y = useTransform(scrollY, [0, 900], [0, 220]);
   return <section id="inicio" className="relative flex min-h-screen items-end overflow-hidden bg-ink text-paper-100">
-    <motion.div className="absolute inset-0 bg-cover bg-center opacity-70" style={{ y, backgroundImage: `url(${basePath}/portfolio/hero.png)` }} />
+    <motion.div className="absolute inset-0 bg-cover bg-center opacity-70" style={{ y, backgroundImage: `url(${basePath}/portfolio/hero.jpg)` }} />
     <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25" /><div className="absolute inset-y-0 right-6 hidden items-center font-serif text-[18vw] tracking-widest opacity-[0.04] [writing-mode:vertical-rl] lg:flex">VINCIT</div>
     <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-24 lg:px-8 lg:pb-32">
       <p className="label-section text-paper-300">Tatuagem autoral em {ARTIST.city}</p>

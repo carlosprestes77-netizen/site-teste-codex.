@@ -14,8 +14,8 @@ const siteUrl = `https://carlosprestes77-netizen.github.io${basePath}`;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: `${STUDIO_NAME} — tatuagem autoral de alto impacto`, template: `%s · ${STUDIO_NAME}` },
-  description: 'Portfólio estático de tatuagem autoral em São Paulo, com fine line, blackwork, ornamental, simulador virtual e agendamento por WhatsApp.',
-  keywords: ['tatuagem autoral', 'tattoo artist', 'fine line', 'blackwork', 'ornamental', 'São Paulo', STUDIO_NAME],
+  description: 'Portfólio estático de tatuagem autoral em Maringá, com whip shading, blackwork, fine line, simulador virtual e agendamento por WhatsApp.',
+  keywords: ['tatuagem autoral', 'tattoo artist', 'whip shading', 'blackwork', 'fine line', 'Maringá', STUDIO_NAME],
   alternates: { canonical: '/' },
   openGraph: {
     title: `${STUDIO_NAME} — tatuagem autoral de alto impacto`,
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     siteName: STUDIO_NAME,
     locale: 'pt_BR',
     type: 'website',
-    images: [{ url: `${basePath}/portfolio/hero.png`, width: 1200, height: 630, alt: `Portfólio ${STUDIO_NAME}` }]
+    images: [{ url: `${basePath}/portfolio/hero.jpg`, width: 1200, height: 630, alt: `Portfólio ${STUDIO_NAME}` }]
   },
-  twitter: { card: 'summary_large_image', title: STUDIO_NAME, description: 'Tatuagem autoral em São Paulo.', images: [`${basePath}/portfolio/hero.png`] }
+  twitter: { card: 'summary_large_image', title: STUDIO_NAME, description: 'Tatuagem autoral em Maringá.', images: [`${basePath}/portfolio/hero.jpg`] }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     '@context': 'https://schema.org',
     '@type': 'TattooParlor',
     name: STUDIO_NAME,
-    image: `${siteUrl}/portfolio/hero.png`,
+    image: `${siteUrl}/portfolio/hero.jpg`,
     address: { '@type': 'PostalAddress', addressLocality: ARTIST.city, addressCountry: 'BR' },
     telephone: `+${ARTIST.whatsapp}`,
     sameAs: [ARTIST.instagram]
