@@ -1,0 +1,4 @@
+'use client';
+import { motion } from 'framer-motion';
+import { processSteps } from '@/lib/data';
+export default function Process(){ return <section id="processo" className="bg-ink px-5 py-24 text-paper-100 lg:px-8 lg:py-36"><div className="mx-auto max-w-7xl"><p className="label-section text-paper-400">05 — Processo</p><h2 className="mt-6 font-serif text-5xl font-light lg:text-7xl">Do primeiro sussurro ao cuidado final.</h2><div className="mt-14 grid gap-px bg-paper-100/15 md:grid-cols-4">{processSteps.map((s,i)=><motion.article key={s.n} initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:'-80px'}} transition={{delay:i*.1}} className="bg-ink p-8"><span className="text-gold-pale">{s.n}</span><h3 className="mt-8 font-serif text-3xl">{s.title}</h3><p className="mt-4 text-sm leading-relaxed text-paper-300">{s.desc}</p></motion.article>)}</div></div></section> }

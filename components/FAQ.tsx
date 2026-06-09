@@ -1,0 +1,6 @@
+'use client';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Plus } from 'lucide-react';
+import { useState } from 'react';
+import { ARTIST, faqs } from '@/lib/data';
+export default function FAQ(){ const [open,setOpen]=useState(0); return <section id="faq" className="px-5 py-24 lg:px-8 lg:py-36"><div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[360px_1fr]"><aside className="lg:sticky lg:top-28 lg:h-max"><p className="label-section">08 — Perguntas</p><h2 className="mt-6 font-serif text-5xl font-light">Antes da primeira linha.</h2><a className="btn-primary mt-8" href={`https://wa.me/${ARTIST.whatsapp}`}>Chamar no WhatsApp</a></aside><div className="border-t border-ink/15">{faqs.map((f,i)=><div className="border-b border-ink/15" key={f.q}><button onClick={()=>setOpen(open===i?-1:i)} className="flex w-full items-center justify-between py-7 text-left font-serif text-2xl"><span>{f.q}</span><Plus className={`transition ${open===i?'rotate-45':''}`}/></button><AnimatePresence>{open===i&&<motion.div initial={{height:0,opacity:0}} animate={{height:'auto',opacity:1}} exit={{height:0,opacity:0}} className="overflow-hidden"><p className="pb-7 leading-relaxed text-ink-muted">{f.a}</p></motion.div>}</AnimatePresence></div>)}</div></div></section> }

@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { min-height: 100vh; }
+::selection { background: #d4b896; color: #0f0c08; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #ece6d9; }
+::-webkit-scrollbar-thumb { background: #7a5c38; border: 2px solid #ece6d9; }
+::-webkit-scrollbar-thumb:hover { background: #2c2319; }
+
+@layer components {
+  .glass-paper { background: rgba(236, 230, 217, 0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+  .btn-primary { @apply inline-flex items-center justify-center bg-ink px-7 py-4 text-[10px] font-bold uppercase tracking-[0.35em] text-paper-100 transition-colors duration-300 hover:bg-ink-warm; border-radius: 0; }
+  .btn-outline { @apply inline-flex items-center justify-center border border-ink px-7 py-4 text-[10px] font-bold uppercase tracking-[0.35em] text-ink transition-colors duration-300 hover:bg-ink hover:text-paper-100; border-radius: 0; }
+  .label-section { @apply text-[10px] uppercase tracking-[0.5em] text-ink-muted; }
+  .divider { @apply h-px w-12 bg-ink-muted; }
+}
+
+.custom-cursor-active, .custom-cursor-active * { cursor: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .grain-animated { animation: none !important; }
+}

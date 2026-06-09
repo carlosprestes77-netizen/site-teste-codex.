@@ -1,0 +1,4 @@
+'use client';
+import { motion } from 'framer-motion';
+import { testimonials } from '@/lib/data';
+export default function Testimonials(){ return <section className="bg-paper-100 px-5 py-24 lg:px-8 lg:py-36"><div className="mx-auto max-w-7xl"><p className="label-section">07 — Depoimentos</p><h2 className="mt-6 font-serif text-5xl font-light">★★★★★</h2><div className="mt-12 grid gap-6 md:grid-cols-3">{testimonials.map((t,i)=><motion.article key={t.name} initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:'-80px'}} transition={{delay:i*.1}} className="border border-ink/15 p-8"><p className="font-serif text-2xl italic leading-relaxed">“{t.quote}”</p><p className="mt-8 font-bold">{t.name}</p><p className="text-[10px] uppercase tracking-[0.3em] text-ink-muted">{t.work}</p></motion.article>)}</div></div></section> }
