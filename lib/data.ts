@@ -12,7 +12,7 @@ export const ARTIST = {
   whatsapp: PHONE_RAW,
   location: 'Rua Harmonia, 318 — Vila Madalena',
   city: 'São Paulo, SP',
-  portrait: `${basePath}/artist/portrait.jpg`,
+  portrait: `${basePath}/artist/portrait.png`,
   hours: [
     { day: 'Terça a sexta', time: '11h às 19h' },
     { day: 'Sábado', time: '10h às 17h' },
@@ -59,7 +59,7 @@ export const portfolioItems = Array.from({ length: 10 }, (_, index) => {
   const style = styles[index % styles.length];
   return {
     id: `obra-${n}`,
-    src: `${basePath}/portfolio/work-${n}.jpg`,
+    src: `${basePath}/portfolio/work-${n}.png`,
     alt: `Tatuagem ${style} autoral por Clara Vértice`,
     style,
     placement: ['antebraço', 'costelas', 'ombro', 'coluna', 'panturrilha'][index % 5],

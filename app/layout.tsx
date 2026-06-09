@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     siteName: STUDIO_NAME,
     locale: 'pt_BR',
     type: 'website',
-    images: [{ url: `${basePath}/portfolio/hero.jpg`, width: 1200, height: 630, alt: `Portfólio ${STUDIO_NAME}` }]
+    images: [{ url: `${basePath}/portfolio/hero.png`, width: 1200, height: 630, alt: `Portfólio ${STUDIO_NAME}` }]
   },
-  twitter: { card: 'summary_large_image', title: STUDIO_NAME, description: 'Tatuagem autoral em São Paulo.', images: [`${basePath}/portfolio/hero.jpg`] }
+  twitter: { card: 'summary_large_image', title: STUDIO_NAME, description: 'Tatuagem autoral em São Paulo.', images: [`${basePath}/portfolio/hero.png`] }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     '@context': 'https://schema.org',
     '@type': 'TattooParlor',
     name: STUDIO_NAME,
-    image: `${siteUrl}/portfolio/hero.jpg`,
+    image: `${siteUrl}/portfolio/hero.png`,
     address: { '@type': 'PostalAddress', addressLocality: ARTIST.city, addressCountry: 'BR' },
     telephone: `+${ARTIST.whatsapp}`,
     sameAs: [ARTIST.instagram]

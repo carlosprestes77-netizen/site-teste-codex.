@@ -2,6 +2,9 @@ node_modules
 .npm-cache
 .next
 out
+public/artist/
+public/flashes/
+public/portfolio/
 .env*.local
 .DS_Store
 npm-debug.log*
